@@ -3,46 +3,19 @@
 淡色ベージュの和風デザインの、個人用レシピノートWebアプリです。
 API・有料サービス・ログインは使っていません。データはすべて端末のブラウザ内（IndexedDB）に保存されます。
 
-## 使い方は2通り
+## 開くURL（iPhone・iPad・PC 共通）
+**https://tld315xrom927-lgtm.github.io/recipe-note/**
 
-| | おすすめ用途 | URL |
-|---|---|---|
-| **A. GitHub Pages（公開版）** | iPhone・iPad・PCどこからでも。PC不要・オフライン可 | `https://<ユーザー名>.github.io/recipe-note/` |
-| **B. PCから配信（ローカル版）** | 公開前の確認、家の中だけで使う | `http://localhost:8080/` |
+PCを起動していなくても使えます。iPhone・iPad は Safari で開き、共有ボタン →「ホーム画面に追加」でアプリのように使えます（オフラインでも開けます）。
+レシピ・写真・献立は Supabase に保存され、合言葉を入れた端末どうしで自動的に同期されます。
 
-> レシピのデータは **開いた端末・URLごと** に保存されます（PCとiPhoneは別のノート、A と B も別のノート）。
-> 端末間でデータを移すときは、一覧画面の下の「バックアップを書き出す / 読み込む」を使ってください。
-> Safari はしばらく開かないサイトのデータを消すことがあるので、ホーム画面に追加＋ときどきバックアップがおすすめです。
+### 公開について
+- GitHub（公開リポジトリ）にはアプリ本体と初期サンプルだけを置いています
+- スクショから取り込んだレシピ・料理写真・元画像は GitHub には置かず、合言葉で守られた Supabase にだけ保存しています（PC の `js/added-recipes*.js`・`assets/recipes/`・`assets/sources/` に元ファイルがあります）
+- アプリを更新して公開するときは `git commit` のあと `python tools/publish.py "更新内容"`（公開しないファイルが混ざっていないか確認してから送ります）
 
-### B. PCから配信する
-1. `start.bat` をダブルクリック（Python 3 が必要。追加インストール不要）
-2. サーバーが起動してから、ブラウザで `http://localhost:8080/` が自動で開きます
-   （8080が使用中なら 8081… を自動で使います。黒い画面に表示されたURLを使ってください）
-3. iPhone / iPad は、PCと**同じWi-Fi**で、黒い画面の `iPhone / iPad : http://192.168.x.x:8080/` をSafariで開く
-4. 終了は黒い画面を閉じる（使う間は開いたままにしてください）
-
-つながらないとき
-- 「このサイトにアクセスできません」→ 黒い画面が閉じていないか確認し、`start.bat` を起動し直す
-- iPhoneから開けない → PCとiPhoneが同じWi-Fiか確認。初回に出たファイアウォールの確認で「許可」したか確認
-- `index.html` を直接ダブルクリックしてもPCのChrome/Edgeでは動きますが、iPhoneでは使えないので上の方法を使ってください
-
-### A. GitHub Pages で公開する（無料）
-このフォルダはそのまま公開できる状態です（`.nojekyll` 設定済み、パスはすべて相対パス）。
-
-```bash
-# GitHub CLI（gh）でログイン済みの場合
-gh repo create recipe-note --public --source . --push
-gh api -X POST repos/{owner}/recipe-note/pages -f "source[branch]=main" -f "source[path]=/"
-```
-または GitHub のWeb画面で：リポジトリを作成してこのフォルダをアップロード →
-Settings → Pages → Branch を `main` / `/(root)` にして Save。
-1〜2分後に `https://<ユーザー名>.github.io/recipe-note/` で開けます。
-iPhone/iPad ではそのURLを Safari で開き、共有 →「ホーム画面に追加」。
-
-更新したときは `git add -A && git commit -m "更新" && git push` で反映されます。
-
-> 公開されるのはアプリ本体とサンプル写真だけです。あなたが登録したレシピは各端末の中にだけ保存され、GitHubには送られません。
-> 参考デザイン画像は `.gitignore` で公開対象から外しています。
+### PCから配信する方法（従来どおり・予備）
+`start.bat` をダブルクリックすると `http://localhost:8080/` でも開けます。スクショ由来のレシピの写真をクラウドへ移すときは、この方法で一度開いて同期してください（自動で写真をクラウドに保存します）。
 
 ## クラウド同期（Supabase・無料プラン）
 Supabase を「正本」として、iPhone・iPad・PC のどれで追加・編集・削除・お気に入り・献立を変えても全端末に反映されます。
