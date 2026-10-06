@@ -1,5 +1,5 @@
 /* オフラインでも開けるようにアプリ本体をキャッシュ（HTTPS / localhost のときのみ有効） */
-const CACHE = 'recipe-note-v11';
+const CACHE = 'recipe-note-v12';
 const ASSETS = [
   './', './index.html', './css/style.css',
   './js/db.js', './js/cloud-config.js', './js/sync.js', './js/parser.js', './js/samples.js', './js/app.js',

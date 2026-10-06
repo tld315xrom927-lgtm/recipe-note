@@ -36,6 +36,7 @@
     return {
       mode: 'indexeddb',
       all: () => tx(STORE, 'readonly', s => s.getAll()).then(list => list || []),
+      keys: () => tx(STORE, 'readonly', s => s.getAllKeys()).then(list => list || []),
       get: id => tx(STORE, 'readonly', s => s.get(id)),
       put: recipe => tx(STORE, 'readwrite', s => s.put(recipe)),
       remove: id => tx(STORE, 'readwrite', s => s.delete(id)),
@@ -60,6 +61,7 @@
     return {
       mode: ls ? 'localstorage' : 'memory',
       all: async () => Object.values(data.recipes).map(clone),
+      keys: async () => Object.keys(data.recipes),
       get: async id => clone(data.recipes[id]),
       put: async r => { data.recipes[r.id] = clone(r); save(); },
       remove: async id => { delete data.recipes[id]; save(); },
@@ -76,6 +78,7 @@
     ready,
     get mode() { return backend ? backend.mode : 'loading'; },
     all: call('all'),
+    keys: call('keys'),
     get: call('get'),
     put: call('put'),
     remove: call('remove'),

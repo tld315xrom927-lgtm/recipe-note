@@ -238,7 +238,7 @@
   async function refresh() {
     const secret = readConfig().secret;
     const manifest = (await rpc('rn_manifest', { p_secret: secret })) || [];
-    const localRecipes = new Set((await raw.all()).map(r => r.id));
+    const localRecipes = new Set(await RecipeDB.keys());
     const localPlans = await getPlans();
     const cloudKeys = new Set();
     const need = [];
@@ -256,6 +256,7 @@
     for (let i = 0; i < need.length; i += 8) {
       const rows = (await rpc('rn_get', { p_secret: secret, p_keys: need.slice(i, i + 8) })) || [];
       for (const row of rows) if (await applyRow(row)) changed++;
+      await saveState(); // 途中で閉じても、取り寄せ済みの分は次回やり直さない
     }
     // クラウドにないもの（未送信を除く）は端末内からも消す
     applying = true;
