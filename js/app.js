@@ -1587,7 +1587,8 @@
     try {
       await RecipeDB.ready;
       await CloudSync.init();
-      if (CloudSync.configured()) {
+      // 端末内にクラウドの写しがあれば待たずに表示し、同期は表示後に裏で行う（初回だけ待つ）
+      if (CloudSync.configured() && !(await RecipeDB.getMeta('sync-last'))) {
         app.innerHTML = '<p class="boot">Recipe Note<small>クラウドから最新のデータを読み込んでいます…</small></p>';
         try {
           await Promise.race([CloudSync.syncNow(), new Promise((_, rej) => setTimeout(() => rej(new Error('timeout')), 10000))]);

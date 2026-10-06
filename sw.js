@@ -1,5 +1,5 @@
 /* オフラインでも開けるようにアプリ本体をキャッシュ（HTTPS / localhost のときのみ有効） */
-const CACHE = 'recipe-note-v10';
+const CACHE = 'recipe-note-v11';
 const ASSETS = [
   './', './index.html', './css/style.css',
   './js/db.js', './js/cloud-config.js', './js/sync.js', './js/parser.js', './js/samples.js', './js/app.js',
@@ -17,19 +17,21 @@ self.addEventListener('activate', e => {
   e.waitUntil(caches.keys().then(keys => Promise.all(keys.filter(k => k !== CACHE).map(k => caches.delete(k)))).then(() => self.clients.claim()));
 });
 
-/* 最新版を取りに行き、オフライン時はキャッシュを返す */
+/* 端末内のキャッシュですぐ表示し、裏で最新版を取りに行って次回に備える（起動を待たせない） */
 self.addEventListener('fetch', e => {
   if (e.request.method !== 'GET') return;
-  if (new URL(e.request.url).hostname.endsWith('.supabase.co')) return;
-  e.respondWith(
-    fetch(e.request)
-      .then(res => {
-        if (res.ok && (e.request.url.startsWith(self.location.origin) || e.request.url.includes('fonts.g'))) {
-          const copy = res.clone();
-          caches.open(CACHE).then(c => c.put(e.request, copy));
-        }
-        return res;
-      })
-      .catch(() => caches.match(e.request, { ignoreSearch: true }))
-  );
+  const url = e.request.url;
+  if (new URL(url).hostname.endsWith('.supabase.co')) return;
+  const cacheable = url.startsWith(self.location.origin) || url.includes('fonts.g');
+  if (!cacheable) return;
+  const update = fetch(e.request).then(res => {
+    // 公開サイトにない追加レシピのファイル（404）も覚えておき、毎回ネットを待たないようにする
+    if (res.ok || (res.status === 404 && url.startsWith(self.location.origin))) {
+      const copy = res.clone();
+      caches.open(CACHE).then(c => c.put(e.request, copy));
+    }
+    return res;
+  });
+  e.waitUntil(update.then(() => {}, () => {}));
+  e.respondWith(caches.match(e.request, { ignoreSearch: true }).then(hit => hit || update));
 });
