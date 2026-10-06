@@ -5,6 +5,6 @@
    ※ Publishable key は公開しても大丈夫なキーです（データは合言葉で守られます）。
      secret key / service_role key は絶対にここに書かないでください。 */
 window.RN_CLOUD_CONFIG = {
-  url: '',
-  anonKey: '',
+  url: 'https://ykmsbifbxjqmidbkvirf.supabase.co',
+  anonKey: 'sb_publishable_NMybsAz9gJZ0hTLq8C0qVA_G15lPoYB',
 };
