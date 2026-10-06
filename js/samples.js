@@ -1,0 +1,141 @@
+/* 初回起動時に入るサンプルレシピ（自由に編集・削除できます） */
+window.SAMPLE_RECIPES = [
+  {
+    title: '濃厚カルボナーラ', subtitle: 'Carbonara', category: '主食', time: 20, servings: '1人分',
+    photo: 'assets/samples/carbonara.jpg', favorite: true,
+    ingredients: [
+      { name: 'スパゲッティ', amount: '100g' }, { name: 'ベーコン', amount: '40g' },
+      { name: '卵黄', amount: '2個分' }, { name: '粉チーズ', amount: '大さじ3' },
+      { name: '生クリーム', amount: '大さじ2' }, { name: 'にんにく', amount: '1/2片' },
+      { name: '黒こしょう', amount: '適量' }, { name: 'オリーブオイル', amount: '小さじ1' },
+    ],
+    steps: [
+      'ボウルに卵黄・粉チーズ・生クリームを入れて混ぜておく。',
+      'たっぷりの湯に塩（分量外）を入れ、スパゲッティを表示時間より1分短くゆでる。',
+      'フライパンにオリーブオイルとつぶしたにんにくを入れて弱火にかけ、香りが出たらベーコンを炒める。',
+      'ゆで上がったスパゲッティとゆで汁大さじ2をフライパンに加え、火を止める。',
+      '1のソースを加えて手早く絡め、器に盛って黒こしょうをふる。',
+    ],
+    memo: '火を止めてからソースを絡めると、卵が固まらずなめらかに仕上がります。',
+  },
+  {
+    title: 'ふわふわ豆腐ハンバーグ', subtitle: 'Tofu Hamburg Steak', category: '主菜', time: 30, servings: '2人分',
+    photo: 'assets/samples/hamburg.jpg', favorite: false,
+    ingredients: [
+      { name: '合いびき肉', amount: '200g' }, { name: '木綿豆腐', amount: '150g' },
+      { name: '玉ねぎ', amount: '1/2個' }, { name: 'パン粉', amount: '大さじ3' },
+      { name: '卵', amount: '1個' }, { name: '塩・こしょう', amount: '少々' },
+      { name: 'ケチャップ', amount: '大さじ3' }, { name: 'ウスターソース', amount: '大さじ2' },
+    ],
+    steps: [
+      '豆腐はキッチンペーパーで包み、10分ほど水切りする。玉ねぎはみじん切りにする。',
+      'ボウルにひき肉・豆腐・玉ねぎ・パン粉・卵・塩こしょうを入れ、粘りが出るまでこねる。',
+      '2等分して小判形に整え、真ん中を軽くくぼませる。',
+      'フライパンで中火で焼き、焼き色がついたら裏返してふたをし、弱火で8分蒸し焼きにする。',
+      'ケチャップとウスターソースを加えて煮絡める。',
+    ],
+    memo: '豆腐の水切りはしっかりと。お弁当用に小さめに作っても◎',
+  },
+  {
+    title: 'ライスペーパーお好み焼き', subtitle: 'Rice Paper Okonomiyaki', category: '副菜', time: 15, servings: '1枚分',
+    photo: 'assets/samples/okonomiyaki.jpg', favorite: false,
+    ingredients: [
+      { name: 'ライスペーパー', amount: '2枚' }, { name: 'キャベツ（千切り）', amount: '60g' },
+      { name: '卵', amount: '1個' }, { name: '豚バラ薄切り肉', amount: '2枚' },
+      { name: 'お好みソース・マヨネーズ', amount: '適量' }, { name: '青ねぎ・かつお節', amount: '適量' },
+    ],
+    steps: [
+      'ボウルにキャベツと卵を入れて混ぜる。',
+      'フライパンにライスペーパーを1枚敷き、1をのせて広げる。',
+      '豚肉をのせ、もう1枚のライスペーパーを水にくぐらせて重ねる。',
+      '中火で両面をカリッと焼く。',
+      'ソース・マヨネーズをかけ、青ねぎとかつお節をのせる。',
+    ],
+    memo: '小麦粉なしで軽い仕上がり。',
+  },
+  {
+    title: 'ライスバーガー', subtitle: 'Rice Burger', category: '主食', time: 20, servings: '2個分',
+    photo: 'assets/samples/burger.jpg', favorite: false,
+    ingredients: [
+      { name: 'ご飯', amount: '300g' }, { name: '片栗粉', amount: '小さじ2' },
+      { name: '牛こま切れ肉', amount: '120g' }, { name: '玉ねぎ', amount: '1/4個' },
+      { name: '焼肉のたれ', amount: '大さじ2' }, { name: 'レタス', amount: '2枚' },
+      { name: 'ごま油', amount: '適量' },
+    ],
+    steps: [
+      'ご飯に片栗粉を混ぜ、4等分して平たい円形に整える。',
+      'ごま油をひいたフライパンで両面をこんがり焼く。',
+      '牛肉と薄切りの玉ねぎを炒め、焼肉のたれで味をつける。',
+      'ライスプレートでレタスと3をはさむ。',
+    ],
+    memo: 'ラップで包むと持ち運びにも便利。',
+  },
+  {
+    title: 'ダルゴナコーヒー', subtitle: 'Dalgona Coffee', category: 'ドリンク', time: 5, servings: '1人分',
+    photo: 'assets/samples/dalgona.jpg', favorite: true,
+    ingredients: [
+      { name: 'インスタントコーヒー', amount: '大さじ2' }, { name: '白砂糖', amount: '大さじ2' },
+      { name: 'お湯', amount: '大さじ3〜4' }, { name: '牛乳またはアイスクリーム', amount: '適量' },
+    ],
+    steps: [
+      'ボウルにインスタントコーヒーと白砂糖を入れる。',
+      'お湯を少しずつ加えながら、ハンドミキサーや泡立て器で5分間以上、もったりとクリーム状になるまで泡立てる。',
+      'クリーミーで艶のある泡になったらOK。',
+      'グラスに冷たい牛乳やアイスクリームを入れ、泡立てたダルゴナコーヒーをのせる。',
+      '完成！よく混ぜながら楽しむ。',
+    ],
+    memo: '泡立て時間が長いほど、なめらかでクリーミーな仕上がりに。\n牛乳は豆乳やアーモンドミルクでも美味しい。\n甘さ控えめにしたい場合は、砂糖の量を調整してOK。',
+  },
+  {
+    title: 'バナナパウンドケーキ', subtitle: 'Banana Pound Cake', category: 'おやつ', time: 60, servings: 'パウンド型1台分',
+    photo: 'assets/samples/banana.jpg', favorite: false,
+    ingredients: [
+      { name: '完熟バナナ', amount: '2本' }, { name: '薄力粉', amount: '120g' },
+      { name: 'ベーキングパウダー', amount: '小さじ1' }, { name: 'バター', amount: '80g' },
+      { name: 'きび砂糖', amount: '70g' }, { name: '卵', amount: '2個' },
+    ],
+    steps: [
+      'オーブンを170℃に予熱する。バターと卵は室温に戻しておく。',
+      'バターと砂糖を白っぽくなるまで混ぜ、溶き卵を少しずつ加える。',
+      'つぶしたバナナを加えて混ぜる。',
+      '薄力粉とベーキングパウダーをふるい入れ、さっくり混ぜる。',
+      '型に流し入れ、170℃で40〜45分焼く。',
+    ],
+    memo: 'バナナは皮に黒い斑点が出たくらいが甘くておすすめ。',
+  },
+  {
+    title: 'かぼちゃのポタージュ', subtitle: 'Pumpkin Potage', category: 'スープ', time: 25, servings: '2人分',
+    photo: 'assets/samples/pumpkin.jpg', favorite: false,
+    ingredients: [
+      { name: 'かぼちゃ', amount: '1/8個（200g）' }, { name: '玉ねぎ', amount: '1/4個' },
+      { name: 'バター', amount: '10g' }, { name: '水', amount: '150ml' },
+      { name: 'コンソメ顆粒', amount: '小さじ1' }, { name: '牛乳', amount: '200ml' },
+      { name: '塩', amount: '少々' },
+    ],
+    steps: [
+      'かぼちゃは皮をむいて薄切り、玉ねぎも薄切りにする。',
+      '鍋にバターを溶かし、玉ねぎをしんなりするまで炒める。',
+      'かぼちゃ・水・コンソメを加え、ふたをして柔らかくなるまで10分煮る。',
+      'ブレンダーでなめらかにし、牛乳を加えて温め、塩で味を調える。',
+    ],
+    memo: '冷やしても美味しいです。',
+  },
+  {
+    title: '紅茶シフォンケーキ', subtitle: 'Tea Chiffon Cake', category: 'おやつ', time: 60, servings: '17cm型1台分',
+    photo: 'assets/samples/chiffon.jpg', favorite: false,
+    ingredients: [
+      { name: '卵', amount: '3個' }, { name: 'グラニュー糖', amount: '60g' },
+      { name: '薄力粉', amount: '70g' }, { name: '米油', amount: '30ml' },
+      { name: '濃いめの紅茶', amount: '50ml' }, { name: '紅茶の茶葉（細かいもの）', amount: '小さじ2' },
+    ],
+    steps: [
+      'オーブンを170℃に予熱する。卵は卵黄と卵白に分ける。',
+      '卵黄に砂糖の1/3を加えて混ぜ、米油・紅茶・茶葉を順に加える。',
+      '薄力粉をふるい入れ、なめらかになるまで混ぜる。',
+      '卵白に残りの砂糖を加えながら、角が立つまで泡立ててメレンゲを作る。',
+      'メレンゲを3回に分けて生地に混ぜ、型に流して170℃で35分焼く。',
+      '焼き上がったら逆さにして完全に冷ます。',
+    ],
+    memo: '生クリームといちごを添えるとおもてなし風に。',
+  },
+];

@@ -1,0 +1,12 @@
+# 参考デザイン画像（公開不要）
+淡色ベージュの和風レシピノート三連画面.png
+__pycache__/
+*.pyc
+.DS_Store
+Thumbs.db
+
+# スクショ由来のレシピ・写真・元画像は公開しない（Supabase に合言葉つきで保存して同期する）
+js/added-recipes.js
+js/added-recipes-2.js
+assets/recipes/
+assets/sources/
